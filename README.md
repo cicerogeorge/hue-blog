@@ -13,6 +13,7 @@ Each model reflects a database table and it is used to map the ata and entities 
 
 Syntax is pretty simple. Here's and example for the table ```users```:
 
+![Image of Users databas]
 (https://raw.githubusercontent.com/cicerogeorge/public/master/Captura%20de%20Tela%202020-07-26%20a%CC%80s%2011.40.52.png)
 
 ```
