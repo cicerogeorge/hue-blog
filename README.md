@@ -15,6 +15,10 @@ To start make a copy of ```appp/config/config.json.sample``` to ```app/config/co
 
 You can find a .sql dump in ```core/dump/dump.sql```.
 
+### Routes
+
+It is important to define at least the default system route at ```app/config/routes```. In our case the default route is defined as ```$routes['default'] = 'posts/index';```
+
 ## 1. Models
 
 Each model reflects a database table and it is used to map the data and entities between the controllers and the database itself.
@@ -40,7 +44,7 @@ class User_Model extends App_Model {
 }
 ```
 
-Each database should have a plural name as each model should have the corresponding singular variation, this is important to keep consistency between the entities. If the table has multiple names (like users_groups) only the last word should be plural. If you have unreconized, irregular or made up words, just add an exception to the ```core/helper/Inflector.php``` file, into the ```$uncountable``` or ```$irregular``` arrays.
+Each database should have a plural name as each model should have the corresponding singular variation, this is important to keep consistency between the entities. If the table has multiple names (like users_groups) only the last word must be plural. If you have unreconized, irregular or made up words, just add an exception to the ```core/helper/Inflector.php``` file, into the ```$uncountable``` or ```$irregular``` arrays.
 
 It is possible to add methods to the models, but for now let's stick to the basics.
 
@@ -71,6 +75,36 @@ Unilke models, controllers can be both plural, singular or made up words, as lon
 
 ## 3. Views
 
-When you are ready to display some data to the browser it is time to call a view. You can call as much views as you want from your controllers, but it is advised to keep it simple and have one view for each controller.
+When you are ready to display some data to the browser it is time to call a view. You can call as many views as you want from your controllers, but it is advised to keep it simple and have one view for each controller.
 
-To call a view just invoke the load view method by using ```$this->load()->view('folder/file')```.
+To call a view just invoke the load view method by using ```$this->load()->view('folder/file', $params)```.
+
+The ```$params``` is optional but if parsed it should be an array. The data will be extracted as variables inside the view. For example, if you want to parse an object containing a list of posts to the view, you could proceed as follows:
+
+```
+$params = [
+	'posts' => $this->load()->model('Posts')->retreive('all', ['order'=>['id'=>'DESC']]);// returns array or false
+];
+
+$this->load()->view('posts/index', $params);
+```
+
+You can then use the variable ```$posts``` on the view ```app/views/posts/index.phtml```:
+
+```
+if ($posts !== false) {
+	foreach ($posts as $post){
+		echo '<h2>' . $post['title'] . '<h2>';
+		echo '<p>' . $post['content'] . '<p><hr>';
+	}
+}
+else {
+	echo 'No posts found';
+}
+```
+
+## 4. Templates
+
+Templates help to reuse code inside the views. You can use the helper method ```get_template($params=array())``` to include helpers, saved at ```app/views/templates``` folder.
+
+It is possible to pass an array of variables to the templates, much like it's done with the views.
