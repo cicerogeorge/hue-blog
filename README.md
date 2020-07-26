@@ -1,5 +1,5 @@
 # Hue Blog
-## Example application for the [Hue Framework][https://github.com/cicerogeorge/hue-framework]
+## Example application for the [Hue Framework](https://github.com/cicerogeorge/hue-framework)
 
 This sample application consists on a blog, build to show the basic capabilities of the Hue Framework
 
@@ -13,7 +13,7 @@ Each model reflects a database table and it is used to map the ata and entities 
 
 Syntax is pretty simple. Here's and example for the table ```users```:
 
-![Image of Users databas]
+![Image of Users database]
 (https://raw.githubusercontent.com/cicerogeorge/public/master/Captura%20de%20Tela%202020-07-26%20a%CC%80s%2011.40.52.png)
 
 ```
@@ -33,6 +33,4 @@ class User_Model extends App_Model {
 }
 ```
 
-Each database should have a plural name as each model should have the corresponding singular variation.
-
-This is important to keep consistency between the entities
+Each database should have a plural name as each model should have the corresponding singular variation, this is important to keep consistency between the entities
