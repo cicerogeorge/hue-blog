@@ -9,7 +9,7 @@ Questions and suggestions may be sent to ```cicerogeorge@gmail.com```
 
 ### Configuration
 
-To start make a copy of ```appp/config/config.json.sample``` to ```app/config/config.json``` and enter your server information. Do not forget to enable apache mod rewrite for the framework to work.
+To start make a copy of ```app/config/config.json.sample``` to ```app/config/config.json``` and enter your server information. Do not forget to enable apache mod rewrite for the framework to work.
 
 ### Database
 
@@ -105,6 +105,6 @@ else {
 
 ## 4. Templates
 
-Templates help to reuse code inside the views. You can use the helper method ```get_template($params=array())``` to include helpers, saved at ```app/views/templates``` folder.
+Templates help to reuse code inside the views. You can use the helper method ```get_template($template_name, $params=array())``` to include helpers, saved at ```app/views/templates``` folder. The ```$params``` is optional here.
 
 It is possible to pass an array of variables to the templates, much like it's done with the views.
