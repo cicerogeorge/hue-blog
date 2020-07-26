@@ -17,7 +17,7 @@ You can find a .sql dump in ```core/dump/dump.sql```.
 
 ## 1. Models
 
-Each model reflects a database table and it is used to map the ata and entities between the controllers and the database itself.
+Each model reflects a database table and it is used to map the data and entities between the controllers and the database itself.
 
 Syntax is pretty simple. Here's and example for the table ```users```:
 
@@ -40,7 +40,8 @@ class User_Model extends App_Model {
 }
 ```
 
-Each database should have a plural name as each model should have the corresponding singular variation, this is important to keep consistency between the entities.
+Each database should have a plural name as each model should have the corresponding singular variation, this is important to keep consistency between the entities. If the table has multiple names (like users_groups) only the last word should be plural. If you have unreconized, irregular or made up words, just add an exception to the ```core/helper/Inflector.php``` file, into the ```$uncountable``` or ```$irregular``` arrays.
+
 It is possible to add methods to the models, but for now let's stick to the basics.
 
 ## 2. Controllers
