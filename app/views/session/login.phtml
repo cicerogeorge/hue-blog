@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php get_template('head', ['page_title'=>'Posts']);?>
+</head>
+<body>
+	<?php get_template('navbar');?>
+
+	<div class="container">
+		<form action="" method="post" style="margin-top: 20px;">
+			<div class="row">
+				<div class="col-4 offset-4">
+					<h2>Login</h2>
+
+					<?php display_messages()?>
+
+					<label>Email:</label>
+					<input type="email" class="form-control" name="email" value="<?=@$_POST['email']?>">
+
+					<label>Password:</label>
+					<input type="password" class="form-control" name="secret">
+
+					<button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Login</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

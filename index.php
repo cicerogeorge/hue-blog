@@ -9,7 +9,7 @@ ini_set('display_errors', 1);// 0 for production
 ini_set('error_reporting', E_ALL);
 
 // session handler
-session_name('hahuh73ha1lkj1109d8sjaka');
+session_name('08y0ho4lkrnqdp987yigjh21bnmksf098079yu1i2');
 session_start();
 
 define('DS', DIRECTORY_SEPARATOR);

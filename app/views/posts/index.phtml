@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php get_template('head', ['page_title'=>'Posts']);?>
+</head>
+<body>
+	<?php get_template('navbar');?>
+
+	<div class="container">
+		<h2 style="margin-bottom: 1rem;">Blog Posts</h2>
+
+		<?php 
+		if ($posts !== false):
+			foreach ($posts[0] as $post):
+		?>
+		<h4><a href="<?=WWWROOT . '/posts/show/' . $post['id']?>"><?=$post['title']?></a></h4>
+
+		<p>
+			Post by <?=$post['user_name']?><br>
+			Category: <?=$post['category_name']?>
+		</p>
+		<?php 
+			endforeach;
+		else:
+		?>
+		<div class="alert alert-info">No posts found. <a href="<?=WWWROOT?>/posts/add">Register a new post now!</a></div>
+		<?php endif?>
+	</div>
+</body>
+</html>

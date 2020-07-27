@@ -4,7 +4,7 @@
 $routes = array();
 
 // default route
-$routes['default'] = 'public/index';
+$routes['default'] = 'posts/index';
 
 $routes['login'] = 'session/login';
 $routes['logout'] = 'session/logout';

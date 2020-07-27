@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php get_template('head', ['page_title'=>'New Post']);?>
+</head>
+<body>
+	<?php get_template('navbar');?>
+
+	<div class="container">
+		<h2>New post</h2>
+
+		<?php display_messages()?>
+		
+		<form action="" method="post">
+			<div class="row">
+				<div class="col-4">
+					<label>Post title:</label>
+					<input type="text" class="form-control" name="title">
+
+					<label>Category:</label>
+					<select class="form-control" name="category_id">
+						<?php foreach ($categories as $category):?>
+						<option value="<?=$category['id']?>"><?=$category['name']?></option>
+						<?php endforeach?>
+					</select>
+
+					<br>
+
+					<button type="submit" class="btn btn-success">Submit Post</button>
+				</div>
+				<div class="col-8">
+					<label>Post Content:</label>
+					<textarea class="form-control" style="height: 30vh;" name="content"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<?php get_template('scripts');?>
+</body>
+</html>

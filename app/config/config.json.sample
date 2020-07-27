@@ -1,6 +1,6 @@
 {
     "development": {
-        "dir": "/hue-framework",
+        "dir": "/hue-blog",
         "database_host": "127.0.0.1",
         "database_name": "",
         "database_user": "",
@@ -18,7 +18,7 @@
         "http_port": ""
     },
     "system_name": "",
-    "language": "",
+    "language": "en",
     "env": "development",
     "version": "1.0.1",
     "last_update": ""

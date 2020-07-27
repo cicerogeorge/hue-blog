@@ -199,12 +199,11 @@ function get_template($template, $params = array()) {
 
 // display messages from $CONFIG['msg']. retrns nothing.
 function display_messages() {
-    return false;
     global $CONFIG;
     if (count($CONFIG['msg']['success'])) {
         echo '<div class="alert alert-success alert-dismissable">';
-        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>';
-        echo '<h4><i class="icon fa fa-check"></i> Sucesso!</h4>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>';
+        echo '<h4><i class="icon fa fa-check"></i> Success!</h4>';
         foreach ($CONFIG['msg']['success'] as $msg) {
             echo "<p>{$msg}</p>";
         }
@@ -212,8 +211,8 @@ function display_messages() {
     }
     if (count($CONFIG['msg']['error'])) {
         echo '<div class="alert alert-danger alert-dismissable">';
-        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>';
-        echo '<h4><i class="icon fa fa-ban"></i> Erro!</h4>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>';
+        echo '<h4><i class="icon fa fa-ban"></i> Error!</h4>';
         foreach ($CONFIG['msg']['error'] as $msg) {
             echo "<p>{$msg}</p>";
         }
@@ -221,7 +220,7 @@ function display_messages() {
     }
     if (count($CONFIG['msg']['info'])) {
         echo '<div class="alert alert-info alert-dismissable">';
-        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>';
         echo '<h4><i class="icon fa fa-info"></i> Info!</h4>';
         foreach ($CONFIG['msg']['info'] as $msg) {
             echo "<p>{$msg}</p>";
@@ -230,8 +229,8 @@ function display_messages() {
     }
     if (count($CONFIG['msg']['alert'])) {
         echo '<div class="alert alert-warning alert-dismissable">';
-        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>';
-        echo '<h4><i class="icon fa fa-warning"></i> Atencao!</h4>';
+        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>';
+        echo '<h4><i class="icon fa fa-warning"></i> Warning!</h4>';
         foreach ($CONFIG['msg']['alert'] as $msg) {
             echo "<p>{$msg}</p>";
         }

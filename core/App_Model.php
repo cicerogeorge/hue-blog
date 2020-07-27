@@ -279,13 +279,11 @@ class App_Model extends Database {
 		// get object class
 		$class = strtolower(get_class($obj));
 		// get database table name
-		// $table = $this->_table_name(substr($class, 0, strpos($class, '_model')));
 		$table = $this->table_name_from_class($class);
 		// connect to database
 		$pdo = $this->connect();
 		// set created date
-		// $obj->created_at = date('Y-m-d H:i:s');
-		$obj->date_create = date('Y-m-d H:i:s');
+		$obj->created_at = date('Y-m-d H:i:s');
 		// transform object into array
 
 		$obj_arr = (array)$obj;
@@ -317,8 +315,7 @@ class App_Model extends Database {
 			$fields_insert[] = $field;
 			$values_insert[] = ':'.$field;
 			// avoid getting extended vars
-			// if ($field == 'deleted_at') break;
-			if ($field == 'active') break;
+			if ($field == 'deleted_at') break;
 		}
 		$fields_insert = implode('`,`', $fields_insert);
 		$values_insert = implode(',', $values_insert);
@@ -330,8 +327,7 @@ class App_Model extends Database {
 		foreach ($obj_arr as $f => $v) {
 			$rs->bindValue(':'.$f, $v);
 			// avoid getting extended vars
-			// if ($f == 'deleted_at') break;
-			if ($f == 'active') break;
+			if ($f == 'deleted_at') break;
 		}
                 
 		try {
@@ -356,7 +352,6 @@ class App_Model extends Database {
 
 		$class = strtolower(get_class($this));
 		// get database table name
-		// $table = $this->_table_name(substr($class, 0, strpos($class, '_model')));
 		$table = $this->table_name_from_class($class);
 
 		$obj_array = (array)$this;
@@ -390,18 +385,11 @@ class App_Model extends Database {
 
 		$system_logs_values = $log_comma = '';
 		foreach ($obj_array as $key => $value) {
-			// if ($this->bkp[$key] != $value) {
-			// 	// save log
-			// 	$system_logs_values .= $log_comma."('".$_SESSION['app']['user']['id']."', '".$table."', '".$this->id."', 'update', '".$key."', '".$this->bkp[$key]."', '".$value."', NOW())";
-			// 	$log_comma = ', ';
-			// }
-
 			// update object accordingly
 			$sql .= $comma.'`'.$key.'` = ?';
 			$comma = ', ';
 			$values_array[] = $value;
-			// if ($key == 'deleted_at') break;
-			if ($key == 'active') break;
+			if ($key == 'deleted_at') break;
 		}
 
 		$values_array[] = $this->id;
@@ -410,12 +398,7 @@ class App_Model extends Database {
 		$pdo = $this->connect();		
 
 		$rs = $pdo->prepare($sql);
-		// if ($rs->execute($values_array)) {
-		// 	return true;
-		// }
-		// else {
-		// 	var_dump($rs->errorInfo());
-		// }
+		
 		try {
 			$rs->execute($values_array);
 			// save log
@@ -449,37 +432,6 @@ class App_Model extends Database {
 		}
 		else {
 			return true;
-		}
-	}
-
-	// receives array with ids to batch delete from database
-	public function delete_batch($collection) {
-		$class = get_class($this);
-
-		$table = $this->table_name_from_class($class);
-
-		$sql = '';
-		foreach ($collection as $id) {
-			$sql .= "DELETE FROM $table WHERE id = '$id';";
-		}
-		$pdo = $this->connect();
-
-		$rs = $pdo->prepare($sql);
-
-		// if ($rs->execute()) {
-		// 	return true;
-		// }
-		// else {
-		// 	var_dump($rs->errorInfo());
-		// }
-		try {
-			$rs->execute();
-			return true;
-		} catch (PDOException $e) {
-			if ($CONFIG['app']['env'] == 'development') {
-				core_errors($e);
-			}
-			return false;
 		}
 	}
 

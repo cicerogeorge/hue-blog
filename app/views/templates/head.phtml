@@ -1,0 +1,13 @@
+<?php
+// it is ok to have a little bit of php inteligence inside templates
+$page_title = $page_title ? $page_title : 'Home';
+?>
+<title><?=$page_title?></title>
+<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>/bootstrap-4/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" type="text/css" href="<?=WEBROOT?>/bootstrap-4/css/bootstrap.min.css">
+
+<style type="text/css">
+.container {
+	padding-top: 10px;
+}
+</style>
