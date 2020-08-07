@@ -69,6 +69,7 @@ class Posts_Controller extends Core\App_Controller {
 		// loads proper view
 		$this->load()->view('posts/index');
 	}
+}
 ```
 
 Unilke models, controllers can be both plural, singular or made up words, as long as the camel case format is respected.
