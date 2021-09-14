@@ -27,20 +27,20 @@ Syntax is pretty simple. Here's and example for the table ```users```:
 
 ![Image of Users database](https://raw.githubusercontent.com/cicerogeorge/public/master/Captura%20de%20Tela%202020-07-26%20a%CC%80s%2011.40.52.png)
 
-```
+```php
 <?php
 namespace Application\Models;
 
 use Core\App_Model as App_Model;
 
 class User_Model extends App_Model {
-	var $id;
-	var $name;
-	var $email;
-	var $secret;
-	var $created_at;
-	var $updated_at;
-	var $deleted_at;
+    var $id;
+    var $name;
+    var $email;
+    var $secret;
+    var $created_at;
+    var $updated_at;
+    var $deleted_at;
 }
 ```
 
@@ -58,17 +58,17 @@ So, for the url http://localhost/hue-blog/posts/index the framework will load ``
 
 Here's how this controller looks like:
 
-```
+```php
 <?php
 namespace Application\Controllers;
 
 use Core;
 
 class Posts_Controller extends Core\App_Controller {
-	public function index() {
-		// loads proper view
-		$this->load()->view('posts/index');
-	}
+    public function index() {
+        // loads proper view
+        $this->load()->view('posts/index');
+    }
 }
 ```
 
@@ -82,9 +82,9 @@ To call a view just invoke the load view method by using ```$this->load()->view(
 
 The ```$params``` is optional but if parsed it should be an array. The data will be extracted as variables inside the view. For example, if you want to parse an object containing a list of posts to the view, you could proceed as follows:
 
-```
+```php
 $params = [
-	'posts' => $this->load()->model('Posts')->retreive('all', ['order'=>['id'=>'DESC']]);// returns array or false
+    'posts' => $this->load()->model('Posts')->retreive('all', ['order'=>['id'=>'DESC']]);// returns array or false
 ];
 
 $this->load()->view('posts/index', $params);
@@ -92,15 +92,15 @@ $this->load()->view('posts/index', $params);
 
 You can then use the variable ```$posts``` on the view ```app/views/posts/index.phtml```:
 
-```
+```php
 if ($posts !== false) {
-	foreach ($posts as $post){
-		echo '<h2>' . $post['title'] . '<h2>';
-		echo '<p>' . $post['content'] . '<p><hr>';
-	}
+    foreach ($posts as $post){
+        echo '<h2>' . $post['title'] . '<h2>';
+	echo '<p>' . $post['content'] . '<p><hr>';
+    }
 }
 else {
-	echo 'No posts found';
+    echo 'No posts found';
 }
 ```
 
